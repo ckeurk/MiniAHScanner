@@ -1,0 +1,37 @@
+## Interface: 110105
+## Title: MiniAHScanner
+## Notes: Un scanner léger pour l'hôtel des ventes qui affiche les prix dans l'infobulle
+## Notes-enUS: A lightweight auction house scanner that displays prices in the tooltip
+## Notes-deDE: Ein leichtgewichtiger Auktionshaus-Scanner, der Preise im Tooltip anzeigt
+## Notes-esES: Un escáner ligero para la casa de subastas que muestra precios en el tooltip
+## Notes-esMX: Un escáner ligero para la casa de subastas que muestra precios en el tooltip
+## Notes-itIT: Uno scanner leggero per la casa d'aste che mostra i prezzi nel tooltip
+## Notes-ruRU: Легкий сканер аукционного дома, который показывает цены в подсказке
+## Notes-ptBR: Um scanner leve para a casa de leilões que exibe preços na dica de ferramenta
+## Notes-koKR: 툴팁에 가격을 표시하는 가벼운 경매장 스캐너
+## Notes-zhCN: 轻量级拍卖行扫描器，在工具提示中显示价格
+## Notes-zhTW: 輕量級拍賣行掃描器，在工具提示中顯示價格
+## Author: Pristï
+## Version: 1.1.0
+## IconTexture: Interface/AddOns/MiniAHScanner/Media/icon.tga
+## SavedVariables: MiniAHSavedVars
+
+# Localisation
+Locales\MiniAH_Localization.lua
+Locales\MiniAH_Localization_deDE.lua
+Locales\MiniAH_Localization_ruRU.lua
+Locales\MiniAH_Localization_esES.lua
+Locales\MiniAH_Localization_itIT.lua
+Locales\MiniAH_Localization_ptBR.lua
+Locales\MiniAH_Localization_koKR.lua
+Locales\MiniAH_Localization_zhCN.lua
+Locales\MiniAH_Localization_zhTW.lua
+
+# Fichiers principaux
+MiniAH_Main.lua
+MiniAH_Database.lua
+MiniAH_Scan.lua
+MiniAH_UI.lua
+MiniAH_OptionsUI.lua
+MiniAH_Minimap.lua
+MiniAH_ProgressBar.lua
