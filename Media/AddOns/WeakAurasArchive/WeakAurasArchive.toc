@@ -1,8 +1,0 @@
-## Interface: 110105
-## Title: |cffe8344fPatched|r WeakAuras Archive
-## Author: Patched by |cff48a295fang2hou|r, Original WeakAuras made by The WeakAuras Team
-## Version: 5.19.9
-## IconTexture: Interface\AddOns\WeakAuras\Media\Textures\icon.blp
-## LoadOnDemand: 1
-## SavedVariables: WeakAurasArchive
-## Dependencies: WeakAuras
