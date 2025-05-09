@@ -1,0 +1,19 @@
+## Interface: 11507
+## Title: |cffe8344fPatched|r WeakAuras Templates
+## Author: Patched by |cff48a295fang2hou|r, Original WeakAuras made by The WeakAuras Team
+## Version: 5.19.9
+## Notes: Templates for WeakAuras
+## Notes-esES: Plantillas para WeakAuras
+## Notes-esMX: Plantillas para WeakAuras
+## X-Category: Interface Enhancements
+## Globe-Main: WeakAuras
+## DefaultState: Enabled
+## LoadOnDemand: 1
+## Dependencies: WeakAuras, WeakAurasOptions
+
+locales.xml
+
+TriggerTemplates.lua
+TriggerTemplatesDataClassicEra.lua
+
+AceGUI-Widgets\AceGUIContainer-WeakAurasTemplateGroup.lua

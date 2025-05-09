@@ -51,8 +51,6 @@ end
 -- Créer le cadre principal de l'interface
 function MiniAH:CreateMainFrame()
     if not self.mainFrame then
-        -- Débug pour vérifier si la fonction est appelée
-        print("Création de l'interface MiniAHScanner...")
         
         -- Créer le cadre principal avec BackdropTemplate
         self.mainFrame = CreateFrame("Frame", "MiniAHMainFrame", UIParent, "BackdropTemplate")
@@ -550,12 +548,9 @@ end
 
 -- Afficher l'interface
 function MiniAH:ShowUI()
-    -- Débug pour vérifier si la fonction est appelée
-    print("Ouverture de l'interface MiniAHScanner...")
     
     -- Créer une interface simplifiée pour éviter les erreurs
     if not self.mainFrame then
-        print("Création d'une interface simplifiée...")
         
         -- Créer le cadre principal
         self.mainFrame = CreateFrame("Frame", "MiniAHSimpleFrame", UIParent, "BackdropTemplate")

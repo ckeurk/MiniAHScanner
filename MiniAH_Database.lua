@@ -56,6 +56,7 @@ function MiniAH:InitDatabaseModule()
             keepHistory = true,
             showAuctionAge = true,
             colorCodePrices = true,
+            useCoinIcons = false, -- Nouvelle option pour les icônes de pièces
             
             -- Options de scan
             scanInterval = 15, -- Intervalle minimum entre les scans en minutes
@@ -294,7 +295,6 @@ function MiniAH:PerformDatabaseMaintenance()
         itemCount = itemCount + 1
     end
     
-    print("|cFF00FFFF" .. ADDON_NAME .. ":|r Base de données : " .. itemCount .. " objets enregistrés.")
     
     return count
 end

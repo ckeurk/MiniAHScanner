@@ -798,8 +798,26 @@ function MiniAH:FillDisplayCategory()
         -25
     )
     
+    -- Option pour afficher les icônes de pièces au lieu des lettres g/s/c
+    local useCoinIcons = self:CreateCheckbox(
+        content,
+        self:GetText("USE_COIN_ICONS"),
+        self:GetText("USE_COIN_ICONS_TOOLTIP"),
+        "useCoinIcons",
+        "TOPLEFT",
+        colorCodePrices,
+        0,
+        -25
+    )
+    
+    -- Initialiser la valeur par défaut à false si elle n'est pas déjà définie
+    if MiniAHSavedVars.useCoinIcons == nil then
+        MiniAHSavedVars.useCoinIcons = false
+        useCoinIcons:SetChecked(false)
+    end
+    
     -- Options de l'interface
-    local uiTitle = self:CreateSectionTitle(content, self:GetText("UI_OPTIONS"), "TOPLEFT", 10, -170)
+    local uiTitle = self:CreateSectionTitle(content, self:GetText("UI_OPTIONS"), "TOPLEFT", 10, -210)
     
     local showMinimap = self:CreateCheckbox(
         content,

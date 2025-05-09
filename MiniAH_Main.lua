@@ -7,7 +7,7 @@ local VERSION = "1.1.0"
 -- Créer le namespace global pour l'addon
 local _, MiniAH = ...
 
--- Fonction pour formater les prix en or/argent/cuivre avec couleurs
+-- Fonction pour formater les prix en or/argent/cuivre avec couleurs et/ou icônes
 local function FormatMoney(amount)
     if not amount then return "N/A" end
     
@@ -15,8 +15,20 @@ local function FormatMoney(amount)
     local silver = math.floor((amount % 10000) / 100)
     local copper = amount % 100
     
+    -- Définir les icônes des pièces
+    local goldIcon = "|TInterface\\MoneyFrame\\UI-GoldIcon:0|t"
+    local silverIcon = "|TInterface\\MoneyFrame\\UI-SilverIcon:0|t"
+    local copperIcon = "|TInterface\\MoneyFrame\\UI-CopperIcon:0|t"
+    
+    -- Vérifier si on doit utiliser les icônes
+    if MiniAHSavedVars and MiniAHSavedVars.useCoinIcons then
+        local result = ""
+        if gold > 0 then result = result .. gold .. goldIcon .. " " end
+        if silver > 0 or gold > 0 then result = result .. silver .. silverIcon .. " " end
+        result = result .. copper .. copperIcon
+        return result
     -- Vérifier si on doit utiliser les couleurs
-    if MiniAHSavedVars and MiniAHSavedVars.colorCodePrices then
+    elseif MiniAHSavedVars and MiniAHSavedVars.colorCodePrices then
         local goldText = gold > 0 and "|cFFFFD700" .. gold .. "g|r" or ""
         local silverText = silver > 0 and "|cFFC0C0C0" .. silver .. "s|r" or ""
         local copperText = copper > 0 and "|cFFB87333" .. copper .. "c|r" or ""
@@ -35,7 +47,7 @@ local function FormatMoney(amount)
             return result
         end
     else
-        -- Version sans couleurs
+        -- Version sans couleurs ni icônes
         local result = ""
         if gold > 0 then result = result .. gold .. "g " end
         if silver > 0 or gold > 0 then result = result .. silver .. "s " end
@@ -364,8 +376,6 @@ end
 
 -- Enregistrer les commandes slash
 function MiniAH:RegisterSlashCommands()
-    -- Débug pour vérifier si la fonction est appelée
-    print("Enregistrement des commandes slash pour MiniAHScanner...")
     
     SLASH_MINIAHSCANNER1 = "/miniahscanner"
     SLASH_MINIAHSCANNER2 = "/mah"

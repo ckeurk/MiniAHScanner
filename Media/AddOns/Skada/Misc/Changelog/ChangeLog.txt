@@ -1,0 +1,767 @@
+=================================================================================================================================================================================
+|																						|
+|	Skada Revision TWW - will be renamed with the next wow addon at the latest, as it is not only intended for TWW !!!							|
+|	-------------------------																		|
+|	Curse-Project-ID: 1188318																		|
+|																						|
+|																						|
+|	API Change Summaries / API Blizzard_Menu																|
+|	----------------------------------------------------------------													|
+|	https://warcraft.wiki.gg/wiki/API_change_summaries															|
+|	https://warcraft.wiki.gg/wiki/Blizzard_Menu_implementation_guide													|
+|																						|
+|																						|
+|	Program Paths																				|
+|	--------------------------------------------------------------------------------------											|
+|	Skada =..\World of Warcraft\_retail_\Interface\AddOns\Skada (Programm Folder contains)											|
+|																						|
+|		Libs   = ..\World of Warcraft\_retail_\Interface\AddOns\Skada\Libs\..												|
+|		Locale = ..\World of Warcraft\_retail_\Interface\AddOns\Skada\Locale\*.lua											|
+|		Main   = ..\World of Warcraft\_retail_\Interface\AddOns\Skada\Main\*.lua											|
+|		Media  = ..\World of Warcraft\_retail_\Interface\AddOns\Skada\Media\..												|
+|		Module = ..\World of Warcraft\_retail_\Interface\AddOns\Skada\Modules\*.lua											|
+|																						|
+|																						|
+|		Misc(ellaneous)																			|
+|		---------------------------------------------------------------------------------------------									|
+|		ChangeLog = ..\World of Warcraft\_retail_\Interface\AddOns\Skada\Misc\ChangeLog\ChangeLog.txt									|
+|		License   = ..\World of Warcraft\_retail_\Interface\AddOns\Skada\Misc\License\License.txt									|
+|																						|
+|																						|
+|	Used Abbreviations																			|
+|	------------------																			|
+|																						|
+|	Reason(s)					Typ															|
+|																						|
+|	[ADD]	Additions				[I]   Initial Version													|
+|	[API]	Application Programming Interface	[R]   Release Version													|
+|	[DSC]	Description				[T]   Test Version (beta-Test)												|
+|	[REV]   Revision				[W]   Internal Work Version (Developer, alpha-Test)									|
+|	[RDA]	Readability																			|
+|	[STR]	Stucture																			|				
+|	[UCL]	Update Changelog																		|
+|																						|
+|																						|
+|	Author			Version		Date		Typ	Curse-Project-ID	License										|
+|	----------------        -------		----------	--- 	----------------	-------										|
+|	Zarnivoop		10.0.2		2022-18-11	[R]	694380			MIT/X										|
+|	(Basis, thx)																				|
+|																						|
+|																						|
+|	Baltha			11.0.7		2025-02-19	[R]	1188318			MIT/X										|
+|	(Revision)		11.1.0																		|
+|																						|
+|																						|
+=================================================================================================================================================================================
+
+
+
+=================================================================================================================================================================================
+
+______________________
+
+Version 11.0.7, 11.1.0
+______________________
+
+
+	_________________________
+
+	Changelog (Modifikations)
+	_________________________
+
+
+	===  [ 001 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2024-11-18					[I]	All			copy of the last version by Zarnivoop (10.0.2)
+
+			[RDA, REV, STR]			[W]	TOC			now Version(s) 11.0.7 (, 11.1.0)
+
+
+	2024-11-18	[REV]				[W]	Files			ChangeLog.txt	(new document)
+											Licence.txt	(new document)
+											embeds.xml	(completly modificated)
+
+
+	2025-02-20	[UCL]					Folders			modification:
+												Folders		ChangeLog
+														License
+
+												->
+
+												Folders		Misc\ChangeLog
+														Misc\License
+
+
+
+	===  [ 002 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog					Done
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2024-11-21	[API]				[W]	Folder 			Modules
+
+								Files			[1]	Damage.lua				[x]
+
+											[2]	Deaths.lua				[x]	
+												Debuffs.lua				[x]
+												Damage.lua				[x]
+												DamageTaken.lua				[x]
+												FriendlyFire.lua			[x]
+												Healing.lua				[x]
+												Overhealing.lua				[x]
+												Power.lua				[x]
+												TotalHealing.lua			[x]
+
+											[3]	Power.lua				[x]
+
+											[4]	Deaths.lua				[x]
+												CC.lua					[x]
+
+
+								Folder			Main
+
+								File			[4]	BarDisplay.lua				[x]
+
+												
+
+											[ + 10.2.6/ 4.4.0/ 1.15.2 ]	    		deprecated
+											-----------------------------------------------------------------------------------------
+											[1] C_Spell.GetSchoolString			GetSchoolString
+
+
+
+											[ + 11.0.0/ 4.4.1/ 1.15.4 ]   			deprecated
+											-----------------------------------------------------------------------------------------
+											[2] C_Spell.GetSpellInfo			GetSpellInfo
+											[3] C_Spell.GetSpellPowerCost			GetSpellPowerCost
+											[4] C_Spell.GetSpellLink			GetSpellLink
+
+
+	2025-02-20	[UCL]								modification:
+													Files / Modules
+
+												->
+
+													Folder Modules
+
+													Files
+
+
+											modification:
+													Files / Main
+
+												->
+
+													Folder Main
+
+													Files
+
+
+
+	===  [ 003 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2024-11-24					[W]				last [W] Version, works correct
+
+
+			[REV]					Folders			unnecessary files (*.xml, *.toc) in Libs subfolders have been deleted
+
+
+			[ADD, STR, DESC,			Folder			Modules
+			 REV, RDA]
+								File			CC.lua
+												CCId's revisted
+
+												Power.lua -> PowerTypes "https://warcraft.wiki.gg/wiki/Enum.PowerType"
+
+												necessary changes in file at -- [ PowerTypes and Description]
+															     -- [ local variables PowerTypes ]
+																function mod:OnEnable()
+																function mod:OnDisable()
+
+
+			[ADD, STR, REV, RDA]			Folder			Locale
+
+								Files			enDE.lua
+												PowerTypes revisted, compare  -- [ local variables PowerTypes ]
+
+											enUS.lua
+												Powertypes revisted, compare  -- [ local variables PowerTypes ]
+
+
+
+	===  [ 004 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2024-11-28	[STR, REV, RDA]			[W]	Folder			Module
+	    ->							Files			*.lua
+	2024-12-05					
+
+
+
+	===  [ 005 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2024-12-14	[STR, REV, RDA]			[T]	Folder			Main
+	    ->
+	2024-12-30						Files			*.lua
+
+
+								Folder			Modules
+
+								Files			*.lua
+
+
+	2025-02-20	[UCL]								modification:
+
+													Folders Main / Modules and Files
+
+												->
+
+													Folder Main
+
+													Files
+
+
+												and
+
+													Folder Modules
+
+													Files
+
+
+
+	===  [ 006 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog	[ +11.0.0 ]   				deprecated
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2025-01-10					[T]	Folder			Main
+	    ->
+	2025-01-27						File			Menu.lua	Blizzard_Menu (new framework)		UIDropDownMenu
+
+
+	2025-01-27	Release				[R]
+	
+
+
+	===  [ 007 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Dokumentation (concise)
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2025-01-29	Documentation			[W]	Folders			Locale, Main, Modules
+	    ->
+	2025-01-31						Files			*.lua (Headlines)
+
+
+											Curse-Project-ID :	xxxxxx
+												-> Curse-Project-ID :	1188318
+
+											Path Revision: 
+												"..\Skada\Changelog\ChangeLog.txt"
+												->	"..\Skada\Misc\Changelog\ChangeLog.txt"
+
+								Folder			Main
+
+								File			Versions.lua
+
+
+								Folder			Modules
+
+								File			*.lua
+
+
+
+	===  [ 008 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog					Done
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2025-02-01	[ADD, REV]			[W]	Folder			Modules
+	    ->
+	2025-02-05						Files			API function	| C_Spell.GetSpellInfo |	catch nil
+
+											Deaths.lua					
+											Debuffs.lua					[x]
+											Damage.lua					[x]
+											DamageTaken.lua					[x]
+											FriendlyFire.lua				[x]
+											Healing.lua					[x]
+											Overhealing.lua					[x]
+											Power.lua					[x]
+											TotalHealing.lua				[x]
+
+
+											API function	| C_Spell.GetSpellPowerCost |	catch nil
+
+											Power.lua					[x]
+
+
+											API function	| C_Spell.GetSpellLink |	catch nil
+
+											Deaths.lua					[x]
+											CC.lua						[x]
+
+
+								Folder			Locale
+
+								Files			deDE.lua, enUS.lua
+
+												add L["Click"]
+
+
+								Folder			Main
+
+								Files			Menu.lua
+
+											Added:
+												integration of categorized as second sort mode in your skada window(s).
+												button in the skada submenu window added to change the current sort mode like
+
+													alphabetical -> categorized
+													categorized  -> alphabetical
+
+
+											currently:
+												if sort mode changed in one skada-window -> all other skada-windows change the mode.
+
+
+											goal:
+												when changing the sort mode, limit this only to the selected one.
+
+
+											BarDisplay.lua
+
+											Fix:
+												window.bargroup:AddButton(L["Configure"] ...
+												window.bargroup:AddButton(L["Report"] ...
+
+												BarDiplay entries updated
+
+											Currently Deprecated:
+												window.bargroup:AddButton(L["Segment"] ...
+												window.bargroup:AddButton(L["Mode"]
+
+
+	2025-02-05						[T]
+	    ->
+	2025-02-10
+
+
+	2025-02-10		Release				[R]				
+
+
+
+
+
+	===  [ 009 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2025-02-10	[ADD, DSC, REV]			[W]	Folder			Locale
+	    ->
+	2025-02-14						Files			deDE.lua
+
+												L["Overheal"] = "Ueberheilung"
+													-> L["Overheal"] = "Ueberheilung"
+
+												L["Overhealing"] = "Überheilung"
+													-> L["Overhealing"] = "Ueberheilung"
+
+
+												solved in Menu.lua:
+
+												Ueberheilung
+													-> Überheilung
+
+											see:
+												-- | Ue -> Ü, german vowel corrupts the sort
+
+
+								Folder			Main
+
+								Files			Skada.lua
+
+												"ADD" rebuilding SkadaWindowsSort/SkadaWindowsChanges ...
+												"DEL" rebuilding SkadaWindowsSort/SkadaWindowsChanges ...
+												"REN" rebuilding SkadaWindowsSort/SkadaWindowsChanges ...
+
+
+											Menu.lua
+
+												necessary changes related to skada.lua
+
+												result:
+												->	changing the sorting mode only affects the selected Skada window,	<-
+
+
+	2025-02-14					[T]
+	    ->			
+	2025-02-16
+
+
+	2025-02-16	Release				[R]
+
+
+
+
+	===  [ 009 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2025-02-17	[REV]				[W]	Folder			Locale
+	    ->
+	2025-02-19						Files			deDE.lua
+
+												minor fixes LDB entries (add blank):
+
+												L["..." .. "..." (...)] = "..." .. "..." (...)
+													-> L["..." .. " ..." (...)] = "..." .. " ..." (...)
+
+
+
+											enUS.lua
+
+												minor fixes LDB entries (add blank):
+
+												L["..." .. "..." (...)] = "..." .. "..." (... )
+													-> L["..." .. " ..." (...)] = "..." .. " ..." (...)
+
+
+								Folder			Main
+
+								File			Menus.lua
+
+												lexiographic supplements categorized sorting, now german client also fine !
+
+												f.e:
+												...
+												Wut erhalten
+												Wahnsinn erhalten
+												->	...
+													Wahnsinn erhalten
+													Wut erhalten
+
+
+	2025-02-20						[T]
+	    ->
+	2025-02-22
+
+
+	2025-02-23						[R]
+
+
+
+
+	===  [ 010 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2025-02-25	[REV, UCL]			[T]	Folder			Main
+	    ->
+	2025-02-26						Files			Skada.lua
+												
+												(cosmetics)
+												Skada Version: x.y.z (deDE) or
+												Skada Version: x.y.z (enUS)
+
+												(f.e. x.y.z = 11.0.7)
+
+												will appear in the chat frame on startup/reload 
+												
+
+												LibStub("AceAddon-3.0"):NewAddon(addon, "Skada", "AceTimer-3.0", "LibNotify-1.0")
+												->	LibStub("AceAddon-3.0"):NewAddon(addon, "Skada", "AceTimer-3.0")
+
+
+												delete:
+
+												if self.db.profile.total then
+													...
+												end
+
+
+												self:SetNotifyIcon("Interface\\Icons\\Spell_Lightning_LightningBolt01")
+												self:SetNotifyStorage(self.db.profile.versions)
+												self:NotifyOnce(self.versions)
+
+												->	if self.db.profile.total then
+														...
+													end
+
+
+											Options.lua
+
+												delete:
+
+												versions = {},
+
+
+								Folder			Skada
+
+								File			Skada.toc
+
+												(cosmetics, file update)
+												## Interface: 110007, 110100
+													-> ## Interface: 110100
+
+												## Version: 11.0.7
+													-> ## Version: 11.1.0
+
+
+								Folder			Main
+
+								Files			Menu.lua
+
+												currently deaktivated:
+
+												lines: 37 - 42
+
+												-- 2025-02-26
+												--[[
+												local aTexture = "Interface\\ChatFrame\\ChatFrameExpandArrow"
+												local dTexture = "ARTWORK"
+												]]
+												--2025-02-26
+
+
+												lines: 238 - 244
+
+												-- 2025-02-26
+												--[[
+												--button.arrow:SetSize(mSize, mSize)
+												--button.arrow:SetTexture(aTexture)
+											   	--button.arrow:SetDrawLayer(dTexture)
+												]]
+												-- 2025-02-26
+
+
+												lines: 570 - 576
+
+												2025-02-26
+												--[[
+												--button.arrow:SetSize(mSize, mSize)
+												--button.arrow:SetTexture(aTexture)
+												--button.arrow:SetDrawLayer(dTexture)
+												]]
+												-- 2025-02-26
+	2025-02-26					[R]
+
+
+
+
+	===  [ 011 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2025-02-25	[ADD, RDA]			[W]	Folder			Locale
+	    ->
+	2025-03-01						Files			enUS.lua
+
+												add LDB-entries for
+
+												L["Del"]
+												L["Duplicates insert"]
+												L["Duplicates rename"]
+												L["has been created"]
+												L["Hint"]
+												L["New Window"]
+
+
+											deDE.lua
+
+												see enUS.lua
+
+
+								Folder			Options.lua
+
+												Readability
+
+
+												additions in
+
+													...
+													create =
+													...
+
+
+								Folder			Main
+
+								Files			Menus.lua
+
+												remove Skada:CurrentSort(categorized, ...
+													--> function Skada:CurrentSort(inputTable, inputSort) in Skada.lua
+
+
+											Skada.lua
+
+												add functions
+
+													Skada:CheckWindowNames
+														-> input validation Skada-Window names
+
+													Skada:CheckWindowDuplicates
+														-> checking input for Skada-Window duplicates
+
+													Skada:CurrentSort
+														-> sort for log data (reverse)
+														   sort for category mode, formely in menus.lua
+
+
+												add tooltips for the following internal events
+
+													"DEL"	[Delete]
+													"INS"	[Insert]
+													"REN"	[Rename]
+
+
+
+	===  [ 012 ]  ===
+
+	Date		Reason(s)			Typ	Reference		Changelog
+	----------	--------------------		---	---------------		-----------------------------------------------------------------------------------------
+	2025-03-06	[ADD, RDA, REV, UCL]		[W]	Folder			Misc\ChangeLog
+	    ->
+	2025-03-12						File			ChangeLog.txt
+
+
+								Folder			Main
+
+								File			BarDisplay.lua
+
+												delete
+
+													--  =========================
+													--  | 2025-02-06 deprecated |
+													--  =========================
+													--		window.bargroup:AddButton(L["Configure"], ...
+													--		window.bargroup:AddButton(L["Segment"], ...
+													--		window.bargroup:AddButton(L["Mode"], ...
+													--		window.bargroup:AddButton(L["Report"], ...
+
+
+								Folder			Main
+
+								Files			BarDisplay.lua
+											BrokerDisplay.lua
+											InlineDisplay.lua
+											Menus.lua
+											Options.lua
+											Skada.lua
+
+												minor changes respectiv [RDA]
+
+
+								Folder			Main
+
+								File			Skada.lua
+
+												function Skada:CurrentSort(inputTable, inputSort)
+													...
+													if inputSort == "CAT" then
+													...
+												->	function Skada:CurrentSort(inputTable, inputSort)
+														...
+														inputSort == "CAT" or inputSort == "ALP" then
+														...
+
+											fixes the incorrect alphabetical sorting (see context menu of a Skada-Window). 
+
+
+								Folder			Main
+
+								File			Menus.lua
+
+												delete
+
+													-- 2026-02-26
+													-- currently deaktivated
+													-- button.arrow:SetSize(mSize, mSize)
+													-- button.arrow:SetTexture(aTexture)
+													-- button.arrow:SetDrawLayer(dTexture)
+													-- 2026-02-26
+
+													replaced by
+
+												add
+
+													MenuVariants = {}
+													...
+													function MenuVariants.CreateSubmenuArrow(frame)
+
+
+												add sort in report [function Skada:CreateReportWindow(window)]
+
+													entry: mode			(alphabetical)
+													entry: segment			(alphabetical/LIFO)
+													entry: channel			(alphabetical)
+
+
+								Folder			Misc
+
+								File			deDE.lua
+
+												L["Current"] = "Momentaner Kampf"
+													--> L["Current"] = "Aktueller Kampf"
+
+												less effort than a sort
+
+
+	===  [ 013 ]  ===
+
+	2025-04-06	[UCL]				[W]	Folder			Misc\ChangeLog
+	    ->
+	2025-04-18						File			ChangeLog.txt
+
+												now up to date
+
+
+								Folder			Skada
+
+								File			Skada.toc
+
+												## Interface: 110100, 110105
+													--> ## Interface: 110105
+
+												## Version: 11.1.0
+													--> ## Version: 11.1.5
+
+
+												## SavedVariablesPerCharacter: SkadaPerCharDB
+													--> ## SavedVariablesPerCharacter: labelButton, modeSort, msaNameTable, mscNameTable, channelSort,
+																	   csaKindTable, csaNameTable, cscNameTable, SkadaPerCharDB
+
+												[necessary for function Skada:CreateReportWindow(window) in Menu.lua]
+
+
+								Folder			Menu
+
+								File			Menu.lua
+
+												sort in report [function Skada:CreateReportWindow(window)]
+
+													entry: mode			(alphabetical)
+													entry: channel			(alphabetical)
+
+													-->	entry: mode			(alphabetical/categorized)
+														entry: channel			(alphabetical/categorized)
+
+
+								Folder			Menu
+
+								File			Skada.lua
+
+												rewritten:	function Skada:CurrentSort(inputTable, inputSort)
+
+												additionally:	"CSA" -> channel sort alphabetical	
+														"CSC" -> channel sort categorized
+
+
+	2025-04-18					[T]
+	    ->
+	2025-04-22
+
+
+	2025-04-23					[R]
